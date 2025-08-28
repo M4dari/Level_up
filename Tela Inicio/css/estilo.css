@@ -112,6 +112,7 @@ h3{ font-size:1.08rem; font-weight:700 }
   display:inline-flex; gap:10px; align-items:center; flex-wrap:wrap;
   padding:6px 10px; border-radius:999px; font-weight:600; font-size:.92rem;
   background:rgba(106,98,255,.12); color:#cfd2ff; border:1px solid rgba(142,130,255,.35);
+  margin-bottom: 20px;
 }
 .announce b{ color:#fff }
 .announce .pill{
@@ -122,15 +123,16 @@ h3{ font-size:1.08rem; font-weight:700 }
 .cta{ display:flex; gap:14px; margin-top:24px; flex-wrap:wrap; justify-content:center }
 
 
-.showcase{ padding-bottom:60px }
-.show-grid{
-  display:grid; gap:18px;
-  grid-template-columns: 1.1fr 1fr;
-  grid-template-areas:
-    "phone cardA"
-    "phone areaBC";
-  align-items:center;
+.showcase .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  gap: 20px;
+  justify-items: center; /* Centraliza os itens horizontalmente */
+  align-items: center;   /* Centraliza os itens verticalmente */
+  height: 100vh; /* Para garantir que ocupe toda a altura da tela */
+  text-align: center; /* Alinha o conteúdo dentro do card */
 }
+
 
 
 .phone{ grid-area: phone; position:relative; max-width:430px; justify-self:center }
@@ -153,14 +155,22 @@ h3{ font-size:1.08rem; font-weight:700 }
   position:relative; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
   border:1px solid var(--linha);
   border-radius:var(--raio-grande); padding:22px; box-shadow:var(--sombra-1); min-height:168px;
+   padding: 22px;
 }
 .card h3{ margin:6px 0 8px }
 .card p{ color:var(--texto-2); font-size:.98rem; margin-bottom:18px }
 .card .btn.branca{ padding:10px 14px }
 
-.cardA{ grid-area: cardA }
-.cardB{ grid-area: areaBC }
-.cardC{ grid-area: areaBC }
+.cardA{ grid-column: 2;
+    width: 90%; /* Ajusta o tamanho do card */
+  text-align: center; 
+}
+/*.cardB{ grid-area: areaBC }
+.cardC{ grid-area: areaBC }*/
+.cardB, .cardC {
+   grid-column: 3;
+    width: 90%;
+}
 
 .show-grid{ grid-auto-rows:min-content }
 .cardB{ margin-bottom:18px }
