@@ -1,11 +1,25 @@
+/* Wrapper para alinhar botão ao final da sidebar */
+
+.sidebar-bottom {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 /* Layout principal da página de Missões */
 .missions-layout {
+  margin-top: 20px;
   display: grid;
-  grid-template-columns: 100px 1fr 280px; /* Sidebar estreita | Conteúdo Principal | Painel Perfil */
+  grid-template-columns: 100px 1fr 280px;
   gap: 24px;
-  padding-top: 24px;
-  padding-bottom: 48px;
-  align-items: start; /* Alinha os itens ao topo */
+  padding-top: 0;
+  padding-bottom: 24px;
+  align-items: start; /* força todos no topo */
+}
+.sidebar,
+.main-content,
+.profile-panel {
+  align-self: start; /* garante alinhamento no topo */
 }
 
 /* Sidebar (esquerda) */
@@ -13,39 +27,42 @@
   background: var(--superficie);
   border: 1px solid var(--linha);
   border-radius: var(--raio-grande);
-  padding: 16px 8px; /* Mais estreito */
+  padding: 40px 8px;
   position: sticky;
   top: 90px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza os itens horizontalmente */
-  justify-content: space-between; /* Empurra o botão de ajuda para baixo */
-  height: calc(100vh - 120px); /* Altura para fixar e empurrar o botão */
+  align-items: center;
+  justify-content: space-between;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 24px; /* mesmo valor para todos */
+  height: fit-content;
 }
 
 .sidebar-menu {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espaçamento entre os itens */
+  gap: 40px;
   width: 100%;
 }
 
 .sidebar-link {
   display: flex;
-  flex-direction: column; /* Ícone e texto empilhados */
+  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   padding: 10px 5px;
   border-radius: var(--raio-pequeno);
   color: var(--texto-2);
   transition: background-color 0.2s, color 0.2s;
   font-weight: 600;
-  font-size: 0.85rem; /* Texto menor */
+  font-size: 0.85rem;
   text-align: center;
 }
 
 .sidebar-link i {
-  font-size: 1.4rem; /* Ícone maior */
+  font-size: 1.4rem;
   margin-bottom: 2px;
 }
 
@@ -55,7 +72,7 @@
 }
 
 .sidebar-link.active {
-  background: linear-gradient(135deg, var(--marca), var(--marca-2)); /* Degradê para destaque */
+  background: linear-gradient(135deg, var(--marca), var(--marca-2));
   color: var(--branco);
   box-shadow: 0 2px 8px rgba(106, 98, 255, 0.3);
 }
@@ -64,7 +81,7 @@
   background: var(--branco);
   color: #0e0f18;
   padding: 8px 12px;
-  border-radius: 999px; /* Pílula */
+  border-radius: 999px;
   font-weight: 700;
   font-size: 0.9rem;
   border: none;
@@ -72,7 +89,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: auto; /* Empurra para o final da sidebar */
   box-shadow: var(--sombra-1);
   transition: transform 0.2s ease;
 }
@@ -81,7 +97,7 @@
   transform: translateY(-2px);
 }
 
-/* Miolo (conteúdo) central */
+/* Conteúdo central */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -90,8 +106,9 @@
 
 .content-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* título à esquerda, link à direita */
+  align-items: center; /* centraliza verticalmente */
+  margin-bottom: 20px; /* espaço abaixo do header */
 }
 
 .breadcrumb {
@@ -100,9 +117,10 @@
 }
 
 .more-assets {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--marca);
   text-decoration: none;
+  margin-left: 20px; /* respiro entre título e link */
   transition: color 0.2s;
 }
 
@@ -111,15 +129,15 @@
 }
 
 .page-title {
-  font-size: var(--passo-2); /* Título grande */
+  font-size: var(--passo-2);
   font-weight: 800;
   color: var(--branco);
   text-transform: uppercase;
   letter-spacing: -0.5px;
-  margin-top: -10px; /* Ajuste para ficar mais próximo do breadcrumb */
+  margin: 0; /* remove margens extras */
 }
 
-/* Filtros por fase (pílulas) */
+/* Filtros */
 .phase-filters {
   display: flex;
   gap: 10px;
@@ -134,7 +152,6 @@
   border: 1px solid var(--linha);
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .phase-pill:hover {
@@ -149,19 +166,18 @@
   box-shadow: 0 2px 8px rgba(106, 98, 255, 0.3);
 }
 
-/* Banner de novidade (callout) */
+/* Banner nova missão */
 .new-mission-banner {
-  background: linear-gradient(90deg, var(--marca), var(--marca-2)); /* Degradê roxo */
+  background: linear-gradient(90deg, var(--marca), var(--marca-2));
   padding: 20px 25px;
   border-radius: var(--raio-grande);
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: var(--branco);
-  font-size: 1.05rem;
   font-weight: 600;
   box-shadow: var(--sombra-1);
-  position: relative; /* Para a seta */
+  position: relative;
 }
 
 .new-mission-banner p {
@@ -177,7 +193,6 @@
   font-weight: 700;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
 .btn-start-mission:hover {
@@ -191,43 +206,38 @@
   transform: translateY(-50%);
   font-size: 1.8rem;
   color: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
 }
 
-/* Lista/Tabela de missões */
+/* Tabela de missões */
 .missions-table-card {
-  background: var(--superficie); /* Cartão escuro */
-  padding: 20px;
+  background: var(--superficie);
+  padding: 28px;
+  max-height: 380px;
 }
 
-.table-header, .table-row {
+.table-header,
+.table-row {
   display: grid;
-  grid-template-columns: 2.5fr 0.8fr 1fr 1.2fr 1fr; /* Colunas ajustadas */
+  grid-template-columns: 2.5fr 0.8fr 1fr 1.2fr 1fr;
   gap: 15px;
   padding: 12px 0;
   align-items: center;
 }
 
 .table-header {
-  color: var(--branco); /* Cabeçalhos claros */
+  color: var(--branco);
   font-weight: 700;
   border-bottom: 1px solid var(--linha);
-  margin-bottom: 10px;
 }
 
 .table-row {
   color: var(--texto-2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03); /* Linha mais fina */
-  transition: background-color 0.2s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   cursor: pointer;
 }
 
 .table-row:hover {
   background-color: rgba(255, 255, 255, 0.02);
-}
-
-.table-row:last-of-type {
-  border-bottom: none;
 }
 
 .col-mission {
@@ -238,13 +248,18 @@
 }
 
 .mission-icon {
-  color: var(--marca); /* Cor da faísca/estrela */
-  font-size: 1.1rem;
+  color: var(--marca);
 }
 
-.status-inprogress { color: #FFD700; } /* Amarelo */
-.status-completed { color: #32CD32; } /* Verde */
-.status-pending { color: #FF6347; } /* Vermelho/Laranja */
+.status-inprogress {
+  color: #ffd700;
+}
+.status-completed {
+  color: #32cd32;
+}
+.status-pending {
+  color: #ff6347;
+}
 
 .more-missions-link {
   display: block;
@@ -252,17 +267,16 @@
   margin-top: 20px;
   color: var(--marca);
   font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s;
 }
 
 .more-missions-link:hover {
   color: var(--marca-2);
 }
 
-/* Painel de Perfil (direita) */
+/* Painel de Perfil */
 .profile-panel {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 24px;
   position: sticky;
@@ -270,11 +284,19 @@
 }
 
 .profile-info-card {
-  padding: 24px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza avatar, nome e botão */
   text-align: center;
+  padding: 24px;
+  width: 100%;
+  max-width: 280px;
+  max-height: 800px;
 }
 
 .profile-header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -283,13 +305,10 @@
 
 .profile-header h3 {
   color: var(--branco);
-  font-size: 1.2rem;
 }
 
 .settings-icon {
   color: var(--texto-2);
-  font-size: 1.1rem;
-  transition: color 0.2s;
 }
 
 .settings-icon:hover {
@@ -316,10 +335,8 @@
 .edit-profile-link {
   font-size: 0.9rem;
   color: var(--marca);
-  text-decoration: none;
-  transition: color 0.2s;
   margin-bottom: 20px;
-  display: block; /* Para aplicar margin-bottom */
+  display: block;
 }
 
 .edit-profile-link:hover {
@@ -332,21 +349,26 @@
   margin: 20px 0;
 }
 
+/* Detalhes alinhados à esquerda */
 .profile-detail {
-  text-align: left;
-  margin-bottom: 15px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--branco);
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .detail-label {
-  font-size: 0.9rem;
-  color: var(--texto-2);
-  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
 }
 
 .detail-value {
-  font-size: 1.1rem;
-  color: var(--branco);
-  font-weight: 600;
+  color: var(--texto-2);
+  font-weight: 500;
 }
 
 .btn-rewards {
@@ -360,6 +382,36 @@
   transition: transform 0.2s ease;
   width: 100%;
   margin-top: 10px;
+  user-select: none;
+}
+/* Título centralizado */
+.profile-status {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--branco);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Separador */
+.separator {
+  height: 1px;
+  background-color: var(--linha);
+  margin: 16px 0;
+}
+
+/* Botão */
+.btn-rewards {
+  background: var(--branco);
+  color: #0e0f18;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: transform 0.2s ease;
 }
 
 .btn-rewards:hover {
@@ -369,45 +421,46 @@
 /* Responsividade */
 @media (max-width: 1200px) {
   .missions-layout {
-    grid-template-columns: 80px 1fr; /* Sidebar mais estreita | Conteúdo Principal + Painel Perfil */
+    grid-template-columns: 80px 1fr;
     grid-template-areas:
       "sidebar main-content"
       "sidebar profile-panel";
   }
 
-  .sidebar { grid-area: sidebar; }
-  .main-content { grid-area: main-content; }
-  .profile-panel { grid-area: profile-panel; }
+  .sidebar {
+    grid-area: sidebar;
+  }
+  .main-content {
+    grid-area: main-content;
+  }
+  .profile-panel {
+    grid-area: profile-panel;
+    align-items: center; /* mantém cartão centralizado */
+  }
 
-  .sidebar-link {
-    font-size: 0.75rem;
-  }
-  .sidebar-link i {
-    font-size: 1.2rem;
-  }
-  .btn-help {
-    font-size: 0.8rem;
-    padding: 6px 10px;
+  .profile-info-card {
+    max-width: 100%; /* ocupa toda a largura disponível */
   }
 }
 
 @media (max-width: 900px) {
   .missions-layout {
-    grid-template-columns: 1fr; /* Tudo em uma coluna */
+    grid-template-columns: 1fr;
     grid-template-areas:
       "sidebar"
       "main-content"
       "profile-panel";
   }
 
-  .sidebar, .profile-panel {
-    position: static; /* Remove sticky */
-    height: auto; /* Remove altura fixa */
+  .sidebar,
+  .profile-panel {
+    position: static;
+    height: auto;
     margin-bottom: 24px;
   }
 
   .sidebar {
-    flex-direction: row; /* Menu lateral vira horizontal */
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     padding: 16px;
@@ -421,24 +474,27 @@
   }
 
   .sidebar-link {
-    flex-direction: row; /* Ícone e texto lado a lado */
+    flex-direction: row;
     gap: 8px;
     padding: 8px 12px;
     font-size: 0.9rem;
   }
+
   .sidebar-link i {
     font-size: 1.1rem;
   }
 
   .btn-help {
-    margin-top: 20px; /* Espaçamento do menu */
+    margin-top: 20px;
   }
 
-  .table-header, .table-row {
-    grid-template-columns: 2fr 0.8fr 1fr; /* Remove colunas para telas pequenas */
+  /* Perfil ocupa 100% e mantém centralização do topo */
+  .profile-panel {
+    align-items: center;
   }
-  .col-last-update, .col-date {
-    display: none; /* Esconde colunas em telas pequenas */
+
+  .profile-info-card {
+    max-width: 100%;
   }
 }
 
@@ -459,21 +515,35 @@
     gap: 15px;
     padding: 15px;
   }
+
   .new-mission-banner p {
     margin-right: 0;
   }
+
   .btn-start-mission {
     width: 100%;
     text-align: center;
   }
+
   .banner-arrow {
-    display: none; /* Esconde a seta em telas muito pequenas */
+    display: none;
   }
 
-  .table-header, .table-row {
-    grid-template-columns: 1.5fr 0.7fr 1fr; /* Ajuste final das colunas */
+  .table-header,
+  .table-row {
+    grid-template-columns: 1.5fr 0.7fr 1fr;
     font-size: 0.9rem;
   }
-  .col-xp { text-align: center; }
-  .col-status { text-align: right; }
+
+  .col-xp {
+    text-align: center;
+  }
+  .col-status {
+    text-align: right;
+  }
+
+  /* Perfil no mobile */
+  .profile-info-card {
+    padding: 16px;
+  }
 }
