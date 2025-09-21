@@ -12,9 +12,10 @@
   <!-- Font Awesome para ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="../Tela Missoes/style.css"> <!-- Reutiliza estilos da sidebar e painel de perfil -->
-  <link rel="stylesheet" href="../Tela Login/style.css"> <!-- Novo arquivo CSS para o layout desta tela -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='dash-style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='missoes-style.css') }}"> <!-- Reutiliza estilos da sidebar e painel de perfil -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}"> <!-- Novo arquivo CSS para o layout desta tela -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='chat-style.css') }}">
 </head>
 
 <body>
@@ -53,25 +54,23 @@
     <!-- Sidebar (esquerda) - Reutiliza a estrutura e estilos de missions.css -->
     <aside class="sidebar">
       <nav class="sidebar-menu">
-        <a href="./index.html" class="sidebar-link active">
+         <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/dash.html" class="sidebar-link active">
           <i class="fas fa-home"></i> Início
         </a>
-        <a href="../Tela Missoes/tela2.html" class="sidebar-link"> <!-- Link para a tela de missões -->
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/missoes.html" class="sidebar-link">
           <i class="fas fa-clipboard-list"></i> Missões
         </a>
-        <a href="#" class="sidebar-link">
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/trilhasconteudo.html" class="sidebar-link">
           <i class="fas fa-book"></i> Trilhas de Conteúdo
         </a>
-        <a href="#" class="sidebar-link">
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/feedback.html" class="sidebar-link">
           <i class="fas fa-comment-dots"></i> Feedback
         </a>
-        <a href="../Tela Badge/index.html" class="sidebar-link">
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/recompensas.html" class="sidebar-link">
           <i class="fas fa-trophy"></i> Recompensas
         </a>
       </nav>
-      <button class="btn-help">
-        <i class="fas fa-keyboard"></i> Ajuda
-      </button>
+      
     </aside>
 
     <!-- Miolo (conteúdo) central -->
@@ -196,10 +195,26 @@
           <p class="detail-value">150 XP</p>
         </div>
 
-        <button class="btn-rewards">Ver Recompensas</button>
-      </div>
-    </aside>
+        <button id="openChatBtn" class="chat-open-btn" aria-label="Abrir chat" title="Abrir chat">
+  <i class="fas fa-comments" aria-hidden="true"></i>
+</button>
+
+<!-- Pop-up do chatbot -->
+<div id="chatPopup" class="chat-popup" role="dialog" aria-label="Assistente Virtual" aria-hidden="true">
+  <div class="chat-header">
+    <span class="chat-title">Assistente Virtual</span>
+    <button id="closeChatBtn" class="chat-close-btn" aria-label="Fechar chat">&times;</button>
   </div>
+
+  <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+
+  <div class="chat-input-area">
+    <input id="userInput" type="text" placeholder="Digite sua mensagem..." aria-label="Mensagem do usuário" />
+    <button id="sendBtn" class="chat-send-btn" aria-label="Enviar mensagem">
+      <i class="fas fa-paper-plane" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
 
   <script>
     // Script para o dropdown do header (mantido do seu original)
@@ -226,6 +241,7 @@
       });
     });
   </script>
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
 </body>
 
 </html>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vivo LevelUp – Trilhas de Conteudo</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="../Tela Login/style.css">
+  <link rel="stylesheet" href="./style.css"> <!-- Novo arquivo CSS para o layout das missões -->
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-badge">V</span>
+        Vivo LevelUp
+      </a>
+
+      <nav class="menu" aria-label="Primária">
+        <a class="link" href="../Tela Inicio/index.html">Início</a>
+
+        <div class="dropdown" aria-expanded="false">
+          <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lv-menu" class="link">
+            Vivo LevelUp ▾
+          </button>
+          <div id="lv-menu" class="dropdown-list" role="menu">
+            <a role="menuitem" href="#">Visão Geral</a>
+            <a role="menuitem" href="#">Funcionalidades</a>
+            <a role="menuitem" href="#">Ajuda</a>
+          </div>
+        </div>
+      </nav>
+
+      <nav class="right" aria-label="Secundária">
+        <a class="link" href="#">Sobre</a>
+        <a class="link" href="#">Ajuda</a>
+        <a class="link" href="#">Sair</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="missions-layout container">
+    <!-- Sidebar (esquerda) -->
+    <aside class="sidebar">
+      <nav class="sidebar-menu">
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/dash.html" class="sidebar-link active">
+          <i class="fas fa-home"></i> Início
+        </a>
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/missoes.html" class="sidebar-link">
+          <i class="fas fa-clipboard-list"></i> Missões
+        </a>
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/trilhasconteudo.html" class="sidebar-link">
+          <i class="fas fa-book"></i> Trilhas de Conteúdo
+        </a>
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/feedback.html" class="sidebar-link">
+          <i class="fas fa-comment-dots"></i> Feedback
+        </a>
+        <a href="/Level_up/NEURIX PROJETO (2)/Level_up/chatbot/templates/recompensas.html" class="sidebar-link">
+          <i class="fas fa-trophy"></i> Recompensas
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Miolo (conteúdo) central -->
+    <main class="main-content">
+      <div class="content-header">
+        <p class="breadcrumb">LevelUp &gt; Trilhas de Conteudo</p>
+        <a href="#" class="more-assets">More Assets &rarr;</a>
+      </div>
+      <h1 class="page-title">MINHAS TRILHAS</h1>
+
+      <!-- Filtros por fase (pílulas) -->
+      <div class="phase-filters">
+        <button class="phase-pill active">Vídeos</button>
+        <button class="phase-pill">PDFs</button>
+        <button class="phase-pill">Quizzes</button>
+        <button class="phase-pill">Todas as Trilhas</button>
+      </div>
+
+      <!-- Banner de novidade (callout) -->
+      <div class="new-mission-banner">
+        <p>Nova trilha liberada! Comunicação entre times</p>
+        <button class="btn-start-mission">Iniciar Trilha </button>
+        <span class="banner-arrow">&rarr;</span>
+      </div>
+
+      <!-- Lista/Tabela de missões -->
+      <div class="card missions-table-card">
+        <div class="table-header">
+          <div class="col-mission">Titulo da Trilha</div>
+          <div class="col-xp">Tipo</div>
+          <div class="col-status">Progresso</div>
+          <div class="col-last-update">Ação</div>
+          <div class="col-date">Data</div>
+        </div>
+        <div class="table-body">
+          <div class="table-row">
+            <div class="col-mission"><i class="fas fa-sparkles mission-icon"></i>Cultura Vivo - Parte 1</div>
+            <div class="col-xp">Vídeo</div>
+            <div class="col-status status-inprogress">60%
+                <i class="fa-solid fa-battery-half"></i>
+            </div>
+            <div class="col-last-update">Continuar</div>
+            <div class="col-date">Maio 21, 2025</div>
+          </div>
+          <div class="table-row">
+            <div class="col-mission"><i class="fas fa-sparkles mission-icon"></i> Manual de Comunicação interna</div>
+            <div class="col-xp">PDF</div>
+            <div class="col-status status-completed">100%
+                <i class="fa-solid fa-battery-full"></i>
+            </div>
+            <div class="col-last-update">Rever</div>
+            <div class="col-date">Maio 19, 2025</div>
+          </div>
+          <div class="table-row">
+            <div class="col-mission"><i class="fas fa-sparkles mission-icon"></i> Trilhas de Boas Praticas de Time</div>
+            <div class="col-xp">Vídeo</div>
+            <div class="col-status status-pending">30%
+                <i class="fa-solid fa-battery-quarter"></i>
+            </div>
+            <div class="col-last-update">Continuar</div>
+            <div class="col-date">Maio 25, 2025</div>
+          </div>
+       
+    </main>
+
+    <!-- Painel de Perfil (direita) -->
+    <aside class="profile-panel">
+      <div class="card profile-info-card">
+        <div class="profile-header">
+          <h3>Perfil</h3>
+          <a href="#"><i class="fas fa-cog settings-icon"></i></a>
+        </div>
+        <div class="avatar-container">
+          <img src="https://via.placeholder.com/120" alt="Avatar de Maria Clara" class="profile-avatar">
+        </div>
+        <h4 class="profile-name">Maria Clara</h4>
+        <a href="#" class="edit-profile-link">Editar Perfil</a>
+
+        <div class="separator"></div>
+
+        <div class="profile-detail">
+          <p class="detail-label">Colaborador Vivo</p>
+          <p class="detail-value">Entrou em: Abril</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="profile-detail">
+          <p class="detail-label">Nível Atual</p>
+          <p class="detail-value">Nível 2 — Explorador</p>
+        </div>
+        <div class="profile-detail">
+          <p class="detail-label">XP Acumulado</p>
+          <p class="detail-value">150 XP</p>
+        </div>
+
+        <button class="btn-rewards">Ver Recompensas</button>
+      </div>
+    </aside>
+  </div>
+   <!-- Botão do chatbot -->
+  <button id="openChatBtn" class="chat-open-btn" aria-label="Abrir chat" title="Abrir chat">
+    <i class="fas fa-comments" aria-hidden="true"></i>
+  </button>
+
+  <!-- Pop-up do chatbot -->
+  <div id="chatPopup" class="chat-popup" role="dialog" aria-label="Assistente Virtual" aria-hidden="true">
+    <div class="chat-header">
+      <span class="chat-title">Assistente Virtual</span>
+      <button id="closeChatBtn" class="chat-close-btn" aria-label="Fechar chat">&times;</button>
+    </div>
+
+    <div id="chatMessages" class="chat-messages" aria-live="polite">
+      <div class="chat-msg bot-msg">
+        <strong>Bot:</strong> Olá! Como posso ajudá-lo hoje? 😊
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <input id="userInput" type="text" placeholder="Digite sua mensagem..." aria-label="Mensagem do usuário" />
+      <button id="sendBtn" class="chat-send-btn" aria-label="Enviar mensagem">
+        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+    <script>
+    // Script para o dropdown do header (mantido do seu original)
+    const dd = document.querySelector('.dropdown');
+    if (dd) {
+      const btn = dd.querySelector('button');
+      btn.addEventListener('click', () => {
+        const expanded = dd.getAttribute('aria-expanded') === 'true';
+        dd.setAttribute('aria-expanded', String(!expanded));
+        btn.setAttribute('aria-expanded', String(!expanded));
+      });
+      document.addEventListener('click', (e) => {
+        if (!dd.contains(e.target)) { dd.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-expanded', 'false'); }
+      });
+    }
+
+    // Script para seleção das pílulas de fase
+    document.querySelectorAll('.phase-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        document.querySelectorAll('.phase-pill').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        // Aqui você adicionaria a lógica para filtrar a tabela de missões
+        console.log('Fase selecionada:', this.textContent);
+      });
+    });
+
+    // Script para clique nas linhas da tabela (exemplo)
+    document.querySelectorAll('.table-row').forEach(row => {
+      row.addEventListener('click', function() {
+        alert('Detalhes da trilha: ' + this.querySelector('.col-mission').textContent);
+        // Aqui você adicionaria a lógica para abrir os detalhes da missão
+      });
+    });
+  </script>
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
