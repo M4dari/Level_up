@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Editar Perfil • Vivo LevelUp</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='avatar-style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <h1>LevelUp • Perfil do Colaborador</h1>
+      </div>
+      <div class="actions">
+
+        <button id="btnSave" class="btn primary">Salvar</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <aside class="left card">
+        <div class="avatar-wrap">
+          <div id="avatarPreview" class="avatar is-initials" aria-label="Avatar do colaborador">
+            <span id="avatarInitials">VL</span>
+            <img id="avatarImg" alt="Foto do avatar" />
+          </div>
+
+          <div class="avatar-controls">
+            <label class="btn" for="avatarInput">Enviar foto</label>
+            <input id="avatarInput" type="file" accept="image/*" hidden>
+            <button id="btnCamera" class="btn">Câmera</button>
+            <button id="btnRemovePhoto" class="btn danger">Remover foto</button>
+          </div>
+
+          <div class="dropzone" id="dropzone">
+            Arraste uma imagem aqui ou clique em “Enviar foto”
+          </div>
+
+          <div class="colors">
+            <div class="colors-head">
+              <small>Gradiente do avatar </small>
+              <button id="btnShuffle" class="chip">🎲 aleatório</button>
+            </div>
+            <div class="swatches" id="swatches"></div>
+          </div>
+        </div>
+
+        <div class="complete card-inner">
+          <div class="row-head">
+            <strong>Completude do perfil</strong>
+            <small id="completePct" class="muted">0%</small>
+          </div>
+          <div class="progress"><span id="completeBar" style="width:0%"></span></div>
+          <small class="muted">Preencha nome, cargo, squad, bio, pelo menos 3 skills e um link para atingir 100%.</small>
+        </div>
+      </aside>
+
+      <section class="right card">
+        <form id="profileForm" class="form">
+          <div class="grid two">
+            <div class="field">
+              <label>Nome completo</label>
+              <input name="nome" id="inpNome" placeholder="Ex.: Ana Souza" required />
+            </div>
+            <div class="field">
+              <label>Cargo</label>
+              <input name="cargo" id="inpCargo" placeholder="Ex.: Analista de Dados" />
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="field">
+              <label>Squad / Área</label>
+              <input name="squad" id="inpSquad" placeholder="Ex.: Squad Alfa" />
+            </div>
+            <div class="field">
+              <label>Local</label>
+              <input name="local" id="inpLocal" placeholder="Ex.: SP • Remoto" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Sobre (bio)</label>
+            <textarea name="bio" id="inpBio" rows="4" placeholder="Conte um pouco sobre você…"></textarea>
+          </div>
+
+          <div class="field">
+            <label>Links</label>
+            <div class="grid two">
+              <input name="linkedin" id="inpLinkedin" placeholder="LinkedIn (URL)" />
+              <input name="github" id="inpGithub" placeholder="GitHub (URL)" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Skills</label>
+            <div class="skills" id="skillsWrap"></div>
+            <div class="skills-add">
+              <input id="skillInput" placeholder="Adicionar skill e Enter…" />
+              <button type="button" id="btnAddSkill" class="btn">Adicionar</button>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="toggle-row">
+              <label class="switch">
+                <input id="chkPublic" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+              <span>Tornar meu perfil público internamente</span>
+            </div>
+
+            
+          </div>
+
+          <div class="actions end">
+            <button type="button" id="btnReset" class="btn ghost">Restaurar padrão</button>
+            <button class="btn primary" type="submit">Salvar alterações</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="overlay" id="camOverlay" aria-hidden="true">
+    <div class="modal">
+      <header class="modal-header">
+        <h3>Capturar foto</h3>
+        <button class="icon-btn" data-close="#camOverlay">✕</button>
+      </header>
+      <div class="modal-body">
+        <video id="camVideo" autoplay playsinline></video>
+        <canvas id="camCanvas" hidden></canvas>
+      </div>
+      <footer class="modal-footer">
+        <button class="btn" data-close="#camOverlay">Cancelar</button>
+        <button id="btnSnap" class="btn primary">Capturar</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='avatar.js') }}"></script>
+</body>
+</html>
