@@ -1,8 +1,0 @@
-flask
-llama-index
-chromadb
-sentence-transformers
-groq
-llama-index-embeddings-huggingface
-llama-index-llms-groq
-
