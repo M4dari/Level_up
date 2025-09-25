@@ -10,9 +10,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByEmailAndSenha(String email, String senha);
 
     Optional<Usuario> findByEmail(String email);
-
-//    Usuario findById(long id);
-//
-//    @Query(value="select * from USUARIO where email = :email and senha = :senha", nativeQuery = true)
-//    public Usuario login(String email, String senha);
 }

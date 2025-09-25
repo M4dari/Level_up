@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         chatPopup.setAttribute("aria-hidden", "true");
     });
 
-    // Função para enviar mensagem
+// Função para enviar mensagem
     async function sendMessage() {
         const message = userInput.value.trim();
         if (!message) {
@@ -102,21 +102,28 @@ document.addEventListener("DOMContentLoaded", () => {
         showTypingIndicator();
 
         try {
-            console.log("🔄 Fazendo requisição para http://localhost:5000/api/app...");
+            // Log corrigido para refletir a nova rota
+            console.log("🔄 Fazendo requisição para http://localhost:5000/chat...");
 
-            const resp = await fetch("http://localhost:5000/api/app", {
+            // Requisição fetch com URL e body CORRIGIDOS
+            const resp = await fetch("http://localhost:5000/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                body: JSON.stringify({ message: message }) // Corrigido para "message"
+                // A chave do JSON agora é "pergunta", como o backend espera
+                body: JSON.stringify({ pergunta: message })
             });
 
             console.log("📡 Status da resposta:", resp.status, resp.statusText);
 
             if (!resp.ok) {
                 const errorText = await resp.text();
+                // A mensagem de erro para 404 agora será mais precisa
+                if (resp.status === 404) {
+                    throw new Error(`HTTP ${resp.status}: Rota não encontrada. Verifique se a URL no chat.js está correta.`);
+                }
                 throw new Error(`HTTP ${resp.status}: ${errorText}`);
             }
 
@@ -142,9 +149,11 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (err.message.includes("HTTP 500")) {
                 errorMessage = "Erro interno do servidor. Verifique os logs do Flask.";
             } else if (err.message.includes("HTTP 404")) {
-                // Esta mensagem agora será mais precisa se você mudar a rota
-                errorMessage = "Erro: rota /api/app não encontrada.";
+                errorMessage = "Erro: rota não encontrada. Verifique o endereço no arquivo chat.js.";
+            } else if (err.message.includes("HTTP 400")){
+                errorMessage = "Erro na requisição: A pergunta não pode estar vazia ou o formato é inválido.";
             }
+
 
             appendMessage("bot", errorMessage, true);
         }

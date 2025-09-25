@@ -1,9 +1,6 @@
 package br.appLogin.appLogin.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -30,6 +27,10 @@ public class Usuario {
 
     @NotNull
     private Date created_at;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private Cargo cargo;
 
     public Usuario() {
     }
@@ -94,5 +95,13 @@ public class Usuario {
 
     public void setSetor(String setor) {
         this.setor = setor;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 }

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestor • Vivo LevelUp</title>
+
+    <link rel="stylesheet" th:href="@{/css/tela_gestor.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo"></div>
+            <h1> LevelUp</h1>
+        </div>
+        <nav class="nav" id="sideNav">
+            <a class="active" data-view="overview" href="#">Visão Geral</a>
+            <a data-view="colabs" href="#">Colaboradores</a>
+            <a data-view="trilhas" href="#">Trilhas & Missões</a>
+            <a data-view="feedbacks" href="#">Feedbacks</a>
+            <a data-view="recompensas" href="#">Recompensas</a>
+            <a data-view="relatorios" href="#">Relatórios</a>
+            <a data-view="config" href="#">Configurações</a>
+        </nav>
+        <div class="spacer"></div>
+        <div class="support"><span class="chip">↗ Ajuda & Glossário</span></div>
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+            <div class="page-title" id="pageTitle">Dashboard do Gestor</div>
+            <div class="search">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M21 21l-4.2-4.2"/>
+                    <circle stroke="currentColor" stroke-width="1.6" cx="11" cy="11" r="7"/>
+                </svg>
+                <input id="searchInput" placeholder="Buscar…" />
+            </div>
+            <div class="actions">
+                <button class="btn" id="btnExport">Exportar</button>
+                <button class="btn primary" id="btnNovaMissao">Nova Missão</button>
+            </div>
+        </div>
+
+
+        <section class="view active" id="view-overview">
+            <section class="grid">
+                <div class="card kpi"><small>Colaboradores Ativos</small><h3 id="kpiAtivos">—</h3><div class="trend up">▲ em tempo real</div></div>
+                <div class="card kpi"><small>Missões em Andamento</small><h3 id="kpiAndamento">—</h3><div class="trend">fase atual</div></div>
+                <div class="card kpi"><small>XP Total (fase)</small><h3 id="kpiXP">—</h3><div class="trend up">▲ somatório real</div></div>
+                <div class="card kpi"><small>Taxa de Conclusão</small><h3 id="kpiConclusao">—</h3><div class="trend">fase atual</div></div>
+
+                <div class="section"><h2>Trilhas & Missões</h2></div>
+                <div class="card table-wrap">
+                    <div class="table-header">
+                        <div class="tabs" id="phaseTabs" role="tablist" aria-label="Fases">
+                            <span class="tab active" role="button" tabindex="0" data-phase="1">Fase 1 (0–30d)</span>
+                            <span class="tab" role="button" tabindex="0" data-phase="2">Fase 2 (31–60d)</span>
+                            <span class="tab" role="button" tabindex="0" data-phase="3">Fase 3 (61–90d)</span>
+                        </div>
+                        <div class="tabs" id="statusTabs" role="tablist" aria-label="Status">
+                            <span class="tab active" role="button" tabindex="0" data-status="Todas">Todas</span>
+                            <span class="tab" role="button" tabindex="0" data-status="Pendente">Pendentes</span>
+                            <span class="tab" role="button" tabindex="0" data-status="Concluída">Concluídas</span>
+                        </div>
+                    </div>
+                    <div class="table-body">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Missão</th><th>Colaborador</th><th>XP</th><th>Status</th><th>Última Atualização</th><th>Deadline</th>
+                            </tr>
+                            </thead>
+                            <tbody id="missionsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <aside class="rail">
+                    <div class="card">
+                        <div class="rail-header">
+                            <h3>Evolução do Time</h3>
+                            <button class="btn" id="btnReport">Ver Relatório</button>
+                        </div>
+                        <div class="list">
+                            <div class="row"><div><div class="title">Onboarding Técnico</div><small class="muted">Conclusão média</small></div><div class="bar"><div class="progress"><span id="progTec"></span></div></div><div class="pill" id="progTecTxt">—%</div></div>
+                            <div class="row"><div><div class="title">Cultura & Valores</div><small class="muted">Conclusão média</small></div><div class="bar"><div class="progress"><span id="progCultura"></span></div></div><div class="pill" id="progCulturaTxt">—%</div></div>
+                            <div class="row"><div><div class="title">Soft Skills</div><small class="muted">Conclusão média</small></div><div class="bar"><div class="progress"><span id="progSoft"></span></div></div><div class="pill" id="progSoftTxt">—%</div></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Aprovações Pendentes</h3>
+                        <div class="list">
+                            <div class="row">
+                                <div><div class="title">Feedback Final – Squad Alfa</div><small class="muted"><span id="feedbackCount">3</span> submissões aguardando revisão</small></div>
+                                <button class="btn" id="btnReview">Revisar</button>
+                            </div>
+                            <div class="row">
+                                <div><div class="title">Recompensas</div><small class="muted"><span id="vouchersCount">2</span> vouchers para liberar</small></div>
+                                <button class="btn" id="btnRelease">Liberar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Ações Rápidas</h3>
+                        <div class="quick-actions">
+                            <button class="btn" id="btnCriarTrilha">Criar Trilha</button>
+                            <button class="btn" id="btnAddColab">Adicionar Colaborador</button>
+                            <button class="btn" id="btnComunicado">Enviar Comunicado</button>
+                            <button class="btn" id="btnAddVoucher">Adicionar Voucher</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="foot">UI inspirada na identidade do projeto • Vivo LevelUp • Neurix</div>
+            </section>
+        </section>
+
+        <section class="view" id="view-colabs">
+            <div class="subheader">
+                <h2>Colaboradores</h2>
+                <div class="muted" id="colabsCount"></div>
+            </div>
+            <div class="cards" id="colabsGrid"></div>
+        </section>
+
+        <section class="view" id="view-trilhas">
+            <div class="subheader">
+                <h2>Todas as Trilhas & Missões</h2>
+                <button class="btn primary" id="btnAddMissaoList">Adicionar Missão</button>
+            </div>
+            <div class="card">
+                <div class="table-body">
+                    <table>
+                        <thead>
+                        <tr><th>Fase</th><th>Missão</th><th>Colaborador</th><th>XP</th><th>Status</th><th>Deadline</th></tr>
+                        </thead>
+                        <tbody id="allMissionsBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="view" id="view-feedbacks">
+            <div class="subheader"><h2>Feedbacks Registrados</h2></div>
+            <div id="feedbacksList"></div>
+        </section>
+        <section class="view" id="view-recompensas">
+            <div class="subheader">
+                <h2>Recompensas & Badges</h2>
+                <button class="btn" id="btnAtribuirPremio">Atribuir</button>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="padding:16px 16px 0">Catálogo Vivo</h3>
+                    <ul class="catalog" id="rewardsCatalog"></ul>
+                </div>
+                <div class="card">
+                    <h3 style="padding:16px 16px 0">Badges</h3>
+                    <ul class="badges" id="badgesCatalog"></ul>
+                </div>
+            </div>
+            <div class="subheader"><h3>Atribuídos / Pendentes</h3></div>
+            <div id="rewardsAssigned"></div>
+        </section>
+        <section class="view" id="view-relatorios">
+            <div class="subheader">
+                <h2>Relatórios</h2>
+                <div class="muted">Gere um relatório visual por fase ou consolidado.</div>
+            </div>
+            <div class="report-cards" id="reportsGrid"></div>
+        </section>
+        <section class="view" id="view-config">
+            <div class="subheader"><h2>Configurações</h2></div>
+            <form id="formConfig" class="form card" style="padding:16px">
+                <div class="field two">
+                    <div>
+                        <label>Fase padrão ao abrir</label>
+                        <select name="defaultPhase" id="cfgDefaultPhase">
+                            <option value="1">Fase 1</option><option value="2">Fase 2</option><option value="3">Fase 3</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Filtro de status padrão</label>
+                        <select name="defaultStatus" id="cfgDefaultStatus">
+                            <option>Todas</option><option>Pendente</option><option>Concluída</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field two">
+                    <div>
+                        <label>Tema</label>
+                        <select name="theme" id="cfgTheme">
+                            <option value="dark">Escuro</option>
+                            <option value="light">Claro</option>
+                            <option value="auto">Automático</option>
+                        </select>
+                    </div>
+                    <div class="toggle-row">
+                        <label class="switch">
+                            <input type="checkbox" id="cfgCompact">
+                            <span class="slider"></span>
+                        </label>
+                        <span>Linhas compactas na tabela</span>
+                    </div>
+                </div>
+
+                <div class="toggle-row">
+                    <label class="switch">
+                        <input type="checkbox" id="cfgNotify">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Notificações (simulado)</span>
+                </div>
+
+                <div class="actions end">
+                    <button type="button" class="btn" id="btnResetCfg">Restaurar padrão</button>
+                    <button class="btn primary" type="submit">Salvar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</div>
+
+<div class="overlay" id="reportOverlay" aria-hidden="true">
+    <div class="modal">
+        <header class="modal-header">
+            <h3>Relatório — Fase <span id="reportPhase">1</span></h3>
+            <button class="icon-btn" data-close="#reportOverlay">✕</button>
+        </header>
+        <div class="modal-body">
+            <div class="report-grid">
+                <div class="r-card"><small>Total de Missões</small><h3 id="repTotalMiss">—</h3></div>
+                <div class="r-card"><small>Concluídas</small><h3 id="repDone">—</h3></div>
+                <div class="r-card"><small>Em Andamento</small><h3 id="repDoing">—</h3></div>
+                <div class="r-card"><small>Pendentes</small><h3 id="repPending">—</h3></div>
+                <div class="r-card wide"><small>XP total na fase</small><div class="progress lg"><span id="repXPSpan"></span></div><div class="muted mt-6"><strong id="repXP">—</strong> XP somados</div></div>
+                <div class="r-card wide"><small>Top Colaboradores (por XP)</small><ol id="repTop" class="top-list"></ol></div>
+            </div>
+        </div>
+        <footer class="modal-footer">
+            <button class="btn" data-close="#reportOverlay">Fechar</button>
+            <button class="btn primary" id="btnExportReport">Exportar CSV</button>
+        </footer>
+    </div>
+</div>
+
+<div class="overlay" id="rewardsOverlay" aria-hidden="true">
+    <div class="modal">
+        <header class="modal-header"><h3>Liberar Recompensas</h3><button class="icon-btn" data-close="#rewardsOverlay">✕</button></header>
+        <div class="modal-body" id="rewardsList"></div>
+        <footer class="modal-footer"><button class="btn" data-close="#rewardsOverlay">Fechar</button></footer>
+    </div>
+</div>
+
+
+<div class="overlay" id="reviewOverlay" aria-hidden="true">
+    <div class="modal">
+        <header class="modal-header"><h3>Revisar Feedbacks</h3><button class="icon-btn" data-close="#reviewOverlay">✕</button></header>
+        <div class="modal-body" id="reviewList"></div>
+        <footer class="modal-footer"><button class="btn" data-close="#reviewOverlay">Fechar</button></footer>
+    </div>
+</div>
+
+<div class="overlay" id="trilhaOverlay" aria-hidden="true">
+    <div class="modal">
+        <header class="modal-header"><h3>Criar Nova Missão</h3><button class="icon-btn" data-close="#trilhaOverlay">✕</button></header>
+        <div class="modal-body">
+            <form id="formTrilha" class="form">
+                <div class="field"><label>Nome da missão</label><input required name="titulo" placeholder="Ex.: Cultura Vivo – Parte 2"/></div>
+                <div class="field two">
+                    <div><label>Fase</label><select name="fase" required><option value="1">Fase 1</option><option value="2">Fase 2</option><option value="3">Fase 3</option></select></div>
+                    <div><label>XP</label><input type="number" min="1" max="200" value="10" name="xp" required></div>
+                </div>
+                <div class="field"><label>Atribuir a</label><select name="colaborador" id="colabSelect" required></select></div>
+                <div class="field"><label>Deadline</label><input type="date" name="deadline"></div>
+                <div class="actions end"><button type="button" class="btn" data-close="#trilhaOverlay">Cancelar</button><button class="btn primary" type="submit">Criar</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="overlay" id="colabOverlay" aria-hidden="true">
+    <div class="modal">
+        <header class="modal-header"><h3>Adicionar Colaborador</h3><button class="icon-btn" data-close="#colabOverlay">✕</button></header>
+        <div class="modal-body">
+            <form id="formColab" class="form">
+                <div class="field"><label>Nome completo</label><input required name="nome" placeholder="Ex.: Sofia Andrade"/></div>
+                <div class="field two"><div><label>Missão inicial</label><input name="missao" value="Primeiro Acesso"></div><div><label>XP</label><input type="number" name="xp" value="5" min="1" max="200"></div></div>
+                <div class="actions end"><button type="button" class="btn" data-close="#colabOverlay">Cancelar</button><button class="btn primary" type="submit">Adicionar</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="comOverlay" aria-hidden="true">
+    <div class="modal">
+        <header class="modal-header"><h3>Enviar Comunicado</h3><button class="icon-btn" data-close="#comOverlay">✕</button></header>
+        <div class="modal-body">
+            <form id="formCom" class="form">
+                <div class="field"><label>Título</label><input required name="titulo" placeholder="Ex.: Atualização das Trilhas"></div>
+                <div class="field"><label>Mensagem</label><textarea required name="mensagem" rows="5" placeholder="Escreva o comunicado..."></textarea></div>
+                <div class="actions end"><button type="button" class="btn" data-close="#comOverlay">Cancelar</button><button class="btn primary" type="submit">Enviar</button></div>
+            </form>
+            <div id="comLog" class="muted mt-6"></div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="voucherOverlay" aria-hidden="true">
+    <div class="modal">
+        <header class="modal-header"><h3>Adicionar Voucher</h3><button class="icon-btn" data-close="#voucherOverlay">✕</button></header>
+        <div class="modal-body">
+            <form id="formVoucher" class="form">
+                <div class="field two">
+                    <div><label>Colaborador</label><select name="colaborador" id="voucherColab" required></select></div>
+                    <div><label>Valor</label><input name="valor" type="text" placeholder="R$ 50" required></div>
+                </div>
+                <div class="field"><label>Descrição</label><input name="descricao" placeholder="Ex.: Voucher iFood" required></div>
+                <div class="field"><label>Expira em</label><input type="date" name="expira"></div>
+                <div class="actions end"><button type="button" class="btn" data-close="#voucherOverlay">Cancelar</button><button class="btn primary" type="submit">Criar Voucher</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="overlay" id="assignOverlay" aria-hidden="true">
+    <div class="modal">
+        <header class="modal-header"><h3>Atribuir Recompensa/Badge</h3><button class="icon-btn" data-close="#assignOverlay">✕</button></header>
+        <div class="modal-body">
+            <form id="formAssign" class="form">
+                <div class="field two">
+                    <div><label>Tipo</label><select name="tipo" id="assignTipo" required>
+                        <option value="recompensa">Recompensa</option>
+                        <option value="badge">Badge</option>
+                    </select></div>
+                    <div><label>Colaborador</label><select name="colaborador" id="assignColab" required></select></div>
+                </div>
+                <div class="field"><label>Item</label><select name="item" id="assignItem" required></select></div>
+                <div class="actions end"><button type="button" class="btn" data-close="#assignOverlay">Cancelar</button><button class="btn primary" type="submit">Atribuir</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script defer th:src="@{/gestor.js}"></script>
+</body>
+</html>

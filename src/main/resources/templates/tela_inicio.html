@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 
-  <link rel="stylesheet" th:href="@{/inicio-style.css}">
+  <link rel="stylesheet" th:href="@{/css/inicio-style.css}">
 </head>
 
 <body>
@@ -41,7 +41,11 @@
       <nav class="right" aria-label="Secundária">
         <a class="link" href="#">Perfil</a>
         <a class="link" href="#">Notificações</a>
-        <a class="link" th:href="@{/login.html}">Sair</a>
+          <form th:action="@{/logout}" method="post" style="display: inline;">
+              <button type="submit" class="link" style="background:none; border:none; padding:0; cursor:pointer;">
+                  Sair
+              </button>
+          </form>
       </nav>
     </div>
   </header>

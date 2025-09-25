@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Arquivos gerados pela compilação do Maven
+/target/
+
+# Arquivos de configuração da IDE IntelliJ
+/.idea/
+
+# Outros arquivos comuns a serem ignorados
+*.log
+*.tmp

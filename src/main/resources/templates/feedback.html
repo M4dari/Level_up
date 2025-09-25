@@ -12,9 +12,9 @@
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <link rel="stylesheet" th:href="@{/style.css}">
-    <link rel="stylesheet" th:href="@{/feedback-style.css}"><!-- Novo arquivo CSS para o layout das missões -->
-    <link rel="stylesheet" th:href="@{/chat-style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/feedback-style.css}"><!-- Novo arquivo CSS para o layout das missões -->
+    <link rel="stylesheet" th:href="@{/css/chat-style.css}">
 </head>
 
 <body>
@@ -45,7 +45,11 @@
             <nav class="right" aria-label="Secundária">
                 <a class="link" href="#">Sobre</a>
                 <a class="link" href="#">Ajuda</a>
-                <a class="link" th:href="@{/login.html}">Sair</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="link" style="background:none; border:none; padding:0; cursor:pointer;">
+                        Sair
+                    </button>
+                </form>
             </nav>
         </div>
     </header>
