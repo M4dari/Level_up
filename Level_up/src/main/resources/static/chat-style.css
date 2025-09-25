@@ -1,0 +1,63 @@
+:root{
+ 
+  --fundo:#0f1220;
+  --superficie:#171a2b;
+  --superficie-2:#1c2034;
+  --superficie-3: #2a2a4a;
+  --linha:rgba(255,255,255,.06);
+  --gradiente-card: linear-gradient(135deg, rgba(106,98,255,0.22), rgba(142,130,255,0.14));
+
+  --marca:#6a62ff;      
+  --marca-2:#8e82ff;    
+  --texto:#e9ecf3;
+  --texto-2:#b8bfd3;
+  --texto-3:#a1a1b8;
+  --branco:#ffffff;
+  --cinza:#8e93a8;
+
+  --raio-grande:14px;
+  --raio-medio:12px;
+  --raio-pequeno:10px;
+
+  --sombra-1: 0 18px 40px rgba(0,0,0,.35);
+  --sombra-2: 0 40px 80px rgba(106,98,255,.25), 0 20px 40px rgba(0,0,0,.45);
+
+  --largura-container:1200px;
+
+
+  --passo--1: clamp(.88rem, .84rem + .2vw, .95rem);
+  --passo-0:  clamp(1.00rem, .96rem + .4vw, 1.06rem);
+  --passo-1:  clamp(1.10rem, 1.00rem + .8vw, 1.25rem);
+  --passo-2:  clamp(1.35rem, 1.10rem + 1.2vw, 1.6rem);
+  --passo-3:  clamp(2.2rem, 1.6rem + 2.5vw, 3.4rem);
+}
+
+/* botão flutuante */
+.chat-open-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--marca);
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+/* chat popup básico */
+.chat-popup { display: none; position: fixed; right: 20px; bottom: 90px; width: 320px; max-height: 420px; background: var(--marca-2); border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,0.15); z-index: 9999; overflow: hidden; }
+.chat-header { background:var(--marca); color:var(--fundo); padding:10px; display:flex; justify-content:space-between; align-items:center; }
+.chat-messages { padding:10px; height: 260px; overflow-y:auto; background:var(--superficie-3); }
+.chat-input-area { display:flex; padding:10px; border-top:1px solid var(--texto); }
+.chat-input-area input { flex:1; padding:8px; border:1px solid #ddd; border-radius:4px; background-color: var(--superficie-3); }
+.chat-input-area button { margin-left:8px; padding:8px 12px; border:none; background:var(--marca); color:#fff; border-radius:4px; cursor:pointer; }
+.chat-msg { margin-bottom:8px; }
+.chat-msg.user-msg { text-align:right; }

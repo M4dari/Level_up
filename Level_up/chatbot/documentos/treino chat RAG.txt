@@ -1,0 +1,167 @@
+﻿1. Resumo executivo
+A Vivo, operada pela Telefónica Brasil, é a maior empresa de telecomunicações do Brasil, oferecendo serviços de telefonia móvel, fixa, banda larga, TV por assinatura, soluções digitais, IoT, cloud e tecnologia corporativa.
+O processo de onboarding na Vivo tem duração referência de 90 dias e visa integrar o novo colaborador à cultura, processos e ferramentas da empresa. Esse período inclui etapas de RH, TI, treinamentos, trilhas de aprendizado, buddy, check-ins e pesquisas de satisfação.
+A Vivo tem aproximadamente 116 milhões de acessos (2024) e cerca de 36 mil colaboradores. É reconhecida por seu compromisso com a sustentabilidade, participando de índices como o ISE B3 e tendo metas de neutralidade de carbono. A empresa investe fortemente em transformação digital, IA e inovação.
+________________
+
+
+2. Missão, visão e valores
+Missão: Conectar pessoas e empresas com tecnologia e serviços digitais seguros, sustentáveis e inovadores.
+Visão: Tornar-se um ecossistema digital completo, indo além da conectividade, oferecendo soluções em saúde, fintech, casa inteligente, educação digital, cloud, cibersegurança e IoT.
+Valores: Foco no cliente, segurança, inovação, sustentabilidade, diversidade e eficiência operacional.
+________________
+
+
+3. Estrutura do Onboarding Vivo
+3.1. Antes do primeiro dia (Pré-onboarding)
+* Enviar documentação ao RH: identidade, dados bancários e outros documentos necessários.
+
+* Configurar e-mail corporativo e acessar o portal Vivo Access / SailPoint para solicitar acessos iniciais.
+
+* Receber orientações iniciais sobre benefícios e primeiros passos.
+
+3.2. Dia 1 — Integração com RH
+   * Apresentação da empresa, cultura, políticas e canais oficiais.
+
+   * Recebimento das credenciais básicas e instruções para solicitar acessos adicionais.
+
+   * Introdução ao buddy e ao gestor.
+
+3.3. Primeira semana — Integração com TI
+      * Apresentação das principais áreas de tecnologia e processos internos.
+
+      * Explicação sobre plataformas usadas pela empresa, como o IDP (Internal Developer Platform), sistemas de versionamento, pipelines e ferramentas corporativas.
+
+      * Primeiros treinamentos técnicos obrigatórios.
+
+3.4. Meses 1 a 3 — Trilhas técnicas e treinamentos
+         * Participação em trilhas específicas para cada papel: desenvolvedor, engenheiro de dados, devops, infraestrutura, etc.
+
+         * Treinamentos obrigatórios: segurança da informação, LGPD, compliance e políticas internas.
+
+         * Certificações internas e habilitação em ferramentas como GitHub Copilot e HÉRCULES.
+
+3.5. Buddy e gestor
+            * O buddy acompanha o colaborador durante os primeiros 90 dias, ajudando em dúvidas e integração cultural.
+
+            * O gestor realiza checkpoints periódicos (30, 60 e 90 dias) para avaliar progresso.
+
+3.6. Pesquisas de satisfação
+               * Pesquisas realizadas em 30 e 90 dias para medir engajamento, qualidade do onboarding e identificar melhorias.
+
+________________
+
+
+4. Ecossistema tecnológico da Vivo
+4.1. Plataformas principais
+                  * IDP (Internal Developer Platform / Platform Code): Portal que oferece automações e aceleradores para provisionamento de infraestrutura, APIs e serviços na nuvem, garantindo governança e agilidade.
+
+                  * HÉRCULES: Assistente para revisão automática de PRs e suporte a boas práticas de desenvolvimento.
+
+                  * GitHub Copilot: Utilizado para acelerar a escrita de código e testes automatizados.
+
+                  * Vivo Access / SailPoint: Sistema para solicitação e aprovação de acessos corporativos.
+
+                  * Catálogo Tech Products: Lista de serviços e componentes técnicos que podem ser provisionados automaticamente.
+
+4.2. Exemplos de Tech Products
+                     * Foundation: Azure Key Vault, Azure Foundation.
+
+                     * Cloud: Redis, Cosmos DB, PostgreSQL, Kubernetes, Event Hub, Service Bus.
+
+                     * Aplicações: Spring Boot, NodeJS, Flutter, API Gateway Axway.
+
+________________
+
+
+5. Glossário de termos internos
+                        * OnboardingX: Projeto para melhorar a jornada de onboarding na Vivo.
+
+                        * Buddy: Colaborador designado para auxiliar o novo integrante nos primeiros meses.
+
+                        * IDP / Platform Code: Plataforma interna de provisionamento e automação para desenvolvimento.
+
+                        * HÉRCULES: Ferramenta interna para revisão de código e automação de PRs.
+
+                        * Vivo Access: Portal para solicitar acessos internos.
+
+                        * SailPoint: Sistema de governança e identidade integrado ao Vivo Access.
+
+                        * Tech Product: Produto técnico padronizado oferecido para os times de tecnologia.
+
+                        * GovApp / GovAPI: Ferramentas de governança de aplicações e APIs.
+
+________________
+
+
+6. Políticas e segurança
+                           * A LGPD rege o tratamento de dados pessoais, sendo obrigatório o consentimento e a justificativa para uso desses dados.
+
+                           * Todo colaborador deve realizar treinamentos obrigatórios de segurança e compliance.
+
+                           * Solicitações de acessos devem ser feitas exclusivamente pelo Vivo Access e aprovadas pelos responsáveis.
+
+                           * Em caso de suspeita de vazamento ou incidente de segurança, o colaborador deve abrir um ticket imediatamente.
+
+________________
+
+
+7. Benefícios e canais de comunicação
+                              * A Vivo oferece benefícios como plano de saúde, vale-alimentação, vale-refeição, transporte, programas de bem-estar e desenvolvimento.
+
+                              * Os valores e elegibilidade variam conforme cargo e contrato, devendo ser consultados no portal de benefícios.
+
+                              * Canais oficiais: Microsoft Teams, e-mail corporativo e intranet.
+
+________________
+
+
+8. Perguntas frequentes
+Quando termina meu período de onboarding?
+ O onboarding tem duração de 90 dias, com checkpoints nos dias 30 e 90.
+Como peço acesso às ferramentas?
+ As solicitações devem ser feitas pelo Vivo Access/SailPoint seguindo a trilha da sua área.
+O que é HÉRCULES?
+ Ferramenta interna que automatiza a revisão de código e dá suporte à qualidade técnica.
+Tenho dúvida sobre benefícios, onde consulto?
+ No portal de benefícios da intranet ou abrindo chamado no RH.
+________________
+
+
+9. Conteúdo técnico para TI
+                                 * Catálogo de serviços: Kafka, Event Hub, Cosmos DB, PostgreSQL Flex, Redis, Kubernetes, Azure Container, VMs Linux/Windows, API Gateway Axway, templates Spring Boot, NodeJS e Flutter.
+
+                                 * Boas práticas: uso correto do IDP, pipelines, templates e governança de APIs.
+
+                                 * Políticas internas: tagging obrigatório, revisão de PRs com HÉRCULES, uso seguro de credenciais via Key Vault.
+
+________________
+
+
+10. Cultura Vivo
+A Vivo valoriza inovação, diversidade, inclusão, sustentabilidade e foco no cliente.
+A empresa investe em tecnologia de ponta, inteligência artificial e transformação digital, com o objetivo de se consolidar como um ecossistema digital completo, indo além de telecomunicações tradicionais.
+________________
+
+
+11. Sustentabilidade e reconhecimento
+A Vivo é reconhecida por suas práticas de responsabilidade social e ambiental, figurando em índices como o ISE B3.
+Possui metas de neutralidade de carbono e programas de inclusão digital e sustentabilidade corporativa.
+________________
+
+
+12. Estrutura geral da empresa
+A empresa é dividida em áreas como Tecnologia, Operações, Comercial, Marketing, Pessoas, Finanças e Jurídico.
+Cada área tem times específicos e processos internos para atender clientes e sustentar a operação.
+________________
+
+
+13. Restrições e orientações gerais
+                                    * O chatbot não deve fornecer informações pessoais, dados financeiros internos ou valores de benefícios.
+
+                                    * Em casos de dúvida sobre dados sensíveis, deve redirecionar o colaborador ao RH ou ao gestor.
+
+                                    * Sempre sugerir abertura de chamados em caso de incidentes, problemas de acesso ou dúvidas críticas.
+
+
+Seu dever é responder perguntas de novos colaboradores da empresa Vivo com o máximo de informações para auxiliá-lo.

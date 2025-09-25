@@ -1,0 +1,261 @@
+/* Layout principal da página de Início (Dashboard Home) */
+.dashboard-home-layout {
+  display: grid;
+  grid-template-columns: 100px 1fr 280px; /* Sidebar estreita | Conteúdo Principal | Painel Perfil */
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 48px;
+  align-items: start; /* Alinha os itens ao topo */
+}
+
+/* Reutiliza estilos da sidebar e painel de perfil de missions.css */
+/* Não é necessário redefinir aqui, pois missions.css já está importado */
+
+/* Conteúdo Central */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cards de status (3 colunas) */
+.status-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 colunas flexíveis */
+  gap: 20px;
+}
+.status-cards-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center; /* ou flex-start, conforme preferir */
+}
+
+.status-card {
+  flex: 1 1 200px; /* largura mínima 200px, cresce conforme espaço */
+  padding: 20px;
+  border-radius: var(--raio-grande);
+  color: var(--branco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Cores específicas para cada card */
+.status-card.progresso {
+  background: var(--roxo-claro); /* Defina essa variável no seu CSS */
+}
+
+.status-card.desbloqueia {
+  background: var(--roxo-escuro);
+}
+
+.status-card.motiva {
+  background: var(--roxo-claro);
+}
+
+.progress-status-card {
+  background: linear-gradient(135deg, var(--marca), var(--marca-2)); /* Fundo roxo */
+  color: var(--branco);
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-status-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.progress-chart img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* Para simular um gráfico circular */
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.progress-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.unlock-status-card {
+  background: var(--superficie); /* Cartão menor */
+  color: var(--texto);
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.unlock-status-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.unlock-days {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--branco);
+  margin-bottom: 15px;
+}
+
+.abstract-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.motivate-status-card {
+  background: linear-gradient(135deg, var(--marca-2), var(--marca)); /* Fundo roxo */
+  color: var(--branco);
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.motivate-status-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.motivate-status-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Seção “Nova Missão Liberada!” */
+.new-mission-released-card {
+  background: var(--superficie); /* Cartão escuro */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Para responsividade */
+}
+
+.new-mission-content {
+  flex-grow: 1;
+  margin-right: 20px; /* Espaçamento do meta */
+}
+
+.new-mission-title {
+  font-size: 1.2rem;
+  color: var(--branco);
+  margin-bottom: 5px;
+}
+
+.new-mission-description {
+  font-size: 0.95rem;
+  color: var(--texto-2);
+}
+
+.new-mission-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  font-size: 0.9rem;
+  color: var(--texto-2);
+}
+
+.new-mission-xp {
+  font-weight: 700;
+  color: var(--marca);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .dashboard-home-layout {
+    grid-template-columns: 80px 1fr; /* Sidebar mais estreita | Conteúdo Principal + Painel Perfil */
+    grid-template-areas:
+      "sidebar main-content"
+      "sidebar profile-panel";
+  }
+  .sidebar { grid-area: sidebar; }
+  .main-content { grid-area: main-content; }
+  .profile-panel { grid-area: profile-panel; }
+}
+
+@media (max-width: 900px) {
+  .dashboard-home-layout {
+    grid-template-columns: 1fr; /* Tudo em uma coluna */
+    grid-template-areas:
+      "sidebar"
+      "main-content"
+      "profile-panel";
+  }
+
+  .sidebar, .profile-panel {
+    position: static; /* Remove sticky */
+    height: auto; /* Remove altura fixa */
+    margin-bottom: 24px;
+  }
+
+  .sidebar {
+    flex-direction: row; /* Menu lateral vira horizontal */
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .sidebar-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .sidebar-link {
+    flex-direction: row; /* Ícone e texto lado a lado */
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .sidebar-link i {
+    font-size: 1.1rem;
+  }
+
+  .btn-help {
+    margin-top: 20px; /* Espaçamento do menu */
+  }
+
+  .new-mission-released-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .new-mission-content {
+    margin-right: 0;
+  }
+  .new-mission-meta {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-home-layout {
+    gap: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .page-title {
+    font-size: var(--passo-1);
+  }
+
+  .status-cards-grid {
+    grid-template-columns: 1fr; /* Cards de status em uma coluna */
+  }
+
+  /* Reutiliza as regras de responsividade da tabela de missions.css */
+}
